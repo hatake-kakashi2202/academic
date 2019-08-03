@@ -1,0 +1,19 @@
+clc
+clear
+close all
+%%
+n=-7:0.1:7;
+xlim([-7,7]);
+ylim([-1,1]);
+k=2;
+p=n-k;
+q=n+k;
+subplot(311);
+stem(n,sin((pi/2)*n));
+title('sin(w*n)');
+subplot(312);
+stem(n,cos((pi/2)*p),'b');
+title('cos(w(n-k))');
+subplot(313);
+stem(n,cos((pi/2)*q),'r');
+title('cos(w(n+k)');
