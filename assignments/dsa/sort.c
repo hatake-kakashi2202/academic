@@ -171,6 +171,48 @@ bst * insert(bst *node,int value){
         node->right=insert(node->right,value);
     return node;
 }
+bst * findmin(bst*root){
+    bst* temp = root; 
+    while (temp && temp->left != NULL) 
+        temp = temp->left; 
+  
+    return temp;
+    
+}
+
+bst * delete(bst * root,int value){
+    if(root==NULL)
+        return root;
+    if(root->data < value){
+        root->right=delete(root->right,value);
+    }
+    else if(root->data > value){
+        root->left=delete(root->left,value);
+    }
+    else{
+        if(root->left == NULL && root->right == NULL){
+            free(root);
+            root=NULL;
+        }
+        else if(root->right==NULL){
+            bst *temp = root->left; 
+            free(root); 
+            return temp;
+        }
+        else if(root->left==NULL){
+            bst *temp = root->right; 
+            free(root); 
+            return temp;
+        }
+        else{
+            bst * min=findmin(root->right);
+            root->data=min->data;
+            root->right=delete(root->right,min->data);
+        }
+    }
+    return root;
+        
+}
 
 void inorder(bst * root){
     if(root!=NULL){
@@ -181,13 +223,27 @@ void inorder(bst * root){
 }
 
 void bstsort(){
-    root=insert(root,2);
     root=insert(root,3);
     root=insert(root,1);
     root=insert(root,5);
+    root=insert(root,0);
+    root=insert(root,2);
     root=insert(root,4);
+    root=insert(root,6);
     printf("\nbst sort\n");
     inorder(root);
+    root=delete(root,0);
+    root=delete(root,1);
+    root=delete(root,6);
+    root=delete(root,5);
+    
+    
+    printf("\nbst after deleting the nodes with one or no child sorting is \n");
+    inorder(root);
+    root=delete(root,3);
+    printf("\nbst after deleting the nodes with two children sorting is \n");
+    inorder(root);
+
 }
 //randomised quick sort
 int rand_partition(int arr[],int low,int high){
