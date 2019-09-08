@@ -249,17 +249,17 @@ void bstsort(){
 int rand_partition(int arr[],int low,int high){
     int random=low+(rand()%(high-low));
     int pivot=arr[random];
-    int i=low;
+    int i=low-1;
     
     swap(&arr[random],&arr[high]);
     for(int j=low;j<high;j++){
         if(arr[j]<pivot){
+	    i++;
             swap(&arr[i],&arr[j]);
-            i++;
         }
     }
-    swap(&arr[i],&arr[high]);
-    return i;
+    swap(&arr[i+1],&arr[high]);
+    return (i+1);
 }
 
 int rand_quicksort(int arr[],int low,int high){
@@ -273,15 +273,15 @@ int rand_quicksort(int arr[],int low,int high){
 //quick sort
 int partition(int arr[],int low,int high){
     int pivot=arr[high];
-    int i=low;
+    int i=low-1;
     for(int j=low;j<high;j++){
         if(arr[j]<pivot){
+	    i++;
             swap(&arr[i],&arr[j]);
-            i++;
         }
     }
-    swap(&arr[i],&arr[high]);
-    return i;
+    swap(&arr[i+1],&arr[high]);
+    return (i+1);
 }
 
 int quicksort(int arr[],int low,int high){
