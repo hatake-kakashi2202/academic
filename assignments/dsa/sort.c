@@ -17,11 +17,11 @@ void insertion_sort(int arr[],int n){
         printf("%d ",arr[i]);
     }
 }
-
-void swap(int *a,int * b){
-    int temp=*a;
-    *a=*b;
-    *b=temp;
+//swaps 2 inters (pass by reference
+void swap(int *num1,int * num2){
+    int temp=*num1;
+    *num1=*num2
+    *num2=temp;
 }
 
 //selection sort
@@ -262,7 +262,7 @@ int rand_partition(int arr[],int low,int high){
     return (i+1);
 }
 
-int rand_quicksort(int arr[],int low,int high){
+void rand_quicksort(int arr[],int low,int high){
     if(low<high){
         int part=rand_partition(arr,low,high);
         rand_quicksort(arr,low,part-1);
@@ -284,7 +284,7 @@ int partition(int arr[],int low,int high){
     return (i+1);
 }
 
-int quicksort(int arr[],int low,int high){
+void quicksort(int arr[],int low,int high){
     if(low<high){
         int part=partition(arr,low,high);
         quicksort(arr,low,part-1);
