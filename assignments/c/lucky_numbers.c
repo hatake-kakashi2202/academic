@@ -4,7 +4,8 @@
   s.sai jyothi kumar
   v.rohit pawar
   a.m.d.venkatesh
-  p.sai veera pavan reddy*/
+  p.sai veera pavan reddy
+  puneeth kashyap*/
 #include <stdio.h>
 #include <string.h>
 
